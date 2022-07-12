@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BlogItem = ({ item }) => {
   return (
-    <ListItem>
+    <ListItem marginLeft='0.5rem'>
       <Link to={`/blog/${item.id}`}>{item.title}</Link>
     </ListItem>
   );

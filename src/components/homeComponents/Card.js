@@ -9,6 +9,7 @@ const Card = ({ imgeUrl, title, onClick }) => {
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
+      margin='1rem'
     >
       <Image width="100%" height="80%" src={imgeUrl} alt="jk" />
       <Box p="6">

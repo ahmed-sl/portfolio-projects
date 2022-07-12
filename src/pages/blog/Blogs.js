@@ -5,6 +5,7 @@ import {
   Flex,
   VStack,
   useToast,
+  Heading,
 } from '@chakra-ui/react';
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +56,7 @@ const Blogs = () => {
         />
       ) : (
         <Container width="100%">
+          <Heading textAlign='center' marginBottom='0.5rem'>Blogs</Heading>
           <VStack width="100%">
             <BlogList blogList={blogList} />
             <Button

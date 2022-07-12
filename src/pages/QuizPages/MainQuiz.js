@@ -86,9 +86,9 @@ const MainQuiz = () => {
   };
   const onClick = async () => {
     if (
-      nameFild === false &&
-      difficultFild === false &&
-      catagoryFild === false &&
+      nameFild === false ||
+      difficultFild === false ||
+      catagoryFild === false ||
       typeFild === false
     ) {
       return toast({
@@ -112,6 +112,7 @@ const MainQuiz = () => {
       setLoading(false);
       navigation('/qustion');
     } catch (error) {
+      
         toast({
             title: 'error in server try again later',
             position:'top-right',

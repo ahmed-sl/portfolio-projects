@@ -4,7 +4,7 @@ import BlogItem from './BlogItem';
 
 const BlogList = ({ blogList }) => {
   return (
-    <UnorderedList width="100%" padding="0.8rem">
+    <UnorderedList width="90%" padding="0.5rem" border='1px'>
       {blogList.map((item, index) => (
         <BlogItem item={item} key={index} />
       ))}

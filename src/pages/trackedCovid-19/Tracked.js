@@ -13,7 +13,10 @@ import {
   Text,
   HStack,
   Input,
+  AspectRatio,
+  iframe,
 } from '@chakra-ui/react';
+import NumberFormat from 'react-number-format';
 import { useNavigate } from 'react-router-dom';
 
 const Tracked = () => {
@@ -57,38 +60,36 @@ const Tracked = () => {
     setLoading(true);
     console.log(counterName);
     try {
-        const request = await fetch(
-            "https://covid19.mathdro.id/api/countries/" + counterName
-          );
-          const data = await request.json();
-      
-          if (request.status === 200) {
-          setSearchedCountry(counterName);
-          setConfirmedCount(data.confirmed.value);
-          setDeathCount(data.deaths.value);
-          setLastUpdate(data.lastUpdate);
-          setCountryName("");
-            setLoading(false);
-          }else{
-            toast({
-                title: 'cuntry name is wrong try other cuntry',
-                position: 'top-right',
-                status: 'error',
-                isClosable: true,
-              });
-              setLoading(false);
+      const request = await fetch(
+        'https://covid19.mathdro.id/api/countries/' + counterName
+      );
+      const data = await request.json();
 
-          }
-          
-    } catch (error) {
+      if (request.status === 200) {
+        setSearchedCountry(counterName);
+        setConfirmedCount(data.confirmed.value);
+        setDeathCount(data.deaths.value);
+        setLastUpdate(data.lastUpdate);
+        setCountryName('');
+        setLoading(false);
+      } else {
         toast({
-            title: 'error in server try again later',
-            position: 'top-right',
-            status: 'error',
-            isClosable: true,
-          });
-          navigate('/')
-        }
+          title: 'cuntry name is wrong try other cuntry',
+          position: 'top-right',
+          status: 'error',
+          isClosable: true,
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      toast({
+        title: 'error in server try again later',
+        position: 'top-right',
+        status: 'error',
+        isClosable: true,
+      });
+      navigate('/');
+    }
   };
   return (
     <Flex
@@ -106,38 +107,55 @@ const Tracked = () => {
           size="xl"
         />
       ) : (
-        <Container width="100%">
-          <Image src={imge} alt="covid19"></Image>
-          <HStack width="100%" marginTop="1rem">
-            <Input onChange={(e)=>setCountryName(e.target.value)}></Input>
-            <Button onClick={onClick}>get data</Button>
-          </HStack>
-          <Text
-            marginTop="1rem"
-            marginBottom="0.5rem"
-            width="100%"
-            textAlign="center"
-          >
-            The total number of covid 19 cases for {searchedCountry}
-          </Text>
-          <Flex marginTop='1rem'>
-            <VStack>
-              <Text>Confirmed count</Text>
-              <Text>{confirmedCount}</Text>
-            </VStack>
-            <Spacer />
-            <VStack>
-              <Text>Deaths count</Text>
-              <Text>{deathCount}</Text>
-            </VStack>
-            <Spacer />
-            <VStack>
-              <Text> Last update</Text>
-              <Text>{lastUpdate}</Text>
-            </VStack>
-            
-          </Flex>
-        </Container>
+        <>
+          <Container width="100%">
+            <AspectRatio width="100%" ratio={1}>
+              <iframe
+                title="covid-19"
+                src="https://experience.arcgis.com/experience/d11785c6c0e046c4a4ad155e8a2d1c7d"
+                allowFullScreen
+              />
+            </AspectRatio>
+            <HStack width="100%" marginTop="1rem">
+              <Input onChange={e => setCountryName(e.target.value)}></Input>
+              <Button onClick={onClick}>get data</Button>
+            </HStack>
+            <Text
+              marginTop="1rem"
+              marginBottom="0.5rem"
+              width="100%"
+              textAlign="center"
+            >
+              The total number of covid 19 cases for {searchedCountry}
+            </Text>
+            <Flex marginTop="1rem">
+              <VStack>
+                <Text>Confirmed count</Text>
+                <NumberFormat
+                  value={confirmedCount}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={''}
+                />
+              </VStack>
+              <Spacer />
+              <VStack>
+                <Text>Deaths count</Text>
+                <NumberFormat
+                  value={deathCount}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={''}
+                />
+              </VStack>
+              <Spacer />
+              <VStack>
+                <Text> Last update</Text>
+                <Text>{lastUpdate}</Text>
+              </VStack>
+            </Flex>
+          </Container>
+        </>
       )}
     </Flex>
   );
