@@ -92,6 +92,8 @@ const Tracked = () => {
     }
   };
   return (
+    <>
+    <Text textAlign='center' fontSize={'4xl'} marginTop='1rem'>Covid-19 Tracked</Text>
     <Flex
       display="flex"
       justifyContent="center"
@@ -158,6 +160,7 @@ const Tracked = () => {
         </>
       )}
     </Flex>
+    </>
   );
 };
 

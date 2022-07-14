@@ -7,7 +7,7 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
+  Link as ChkraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -25,7 +25,7 @@ import {
 } from '@chakra-ui/icons';
 import logoImg from '../Images/Logo2.svg';
 import myCV from '../Files/My_CV.pdf'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
   const { isOpen, onToggle } = useDisclosure();
@@ -106,10 +106,11 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
+              <NavLink
                 p={2}
-                href={navItem.href ?? '/'}
+                to={navItem.href ?? '/'}
                 fontSize={'sm'}
+                textAlign='center'
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -118,7 +119,7 @@ const DesktopNav = () => {
                 }}
               >
                 {navItem.label}
-              </Link>
+              </NavLink>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -159,7 +160,7 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <Link
+    <ChkraLink
       href={href}
       role={'group'}
       display={'block'}
@@ -190,7 +191,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </Link>
+    </ChkraLink>
   );
 };
 
@@ -215,7 +216,7 @@ const MobileNavItem = ({ label, children, href }) => {
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        as={Link}
+        as={ChkraLink}
         href={href ?? '#'}
         justify={'space-between'}
         align={'center'}
@@ -251,9 +252,9 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map(child => (
-              <Link key={child.label} py={2} href={child.href}>
+              <ChkraLink key={child.label} py={2} href={child.href}>
                 {child.label}
-              </Link>
+              </ChkraLink>
             ))}
         </Stack>
       </Collapse>

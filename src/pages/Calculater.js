@@ -37,6 +37,7 @@ const Calculater = () => {
         alignItems="center"
         height="100vh"
       >
+        
         <Container>
           <Box display="flex" width="30rem" justifyContent="space-between">
             <Input
