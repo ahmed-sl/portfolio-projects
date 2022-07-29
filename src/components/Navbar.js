@@ -7,7 +7,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link as ChkraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -216,8 +215,8 @@ const MobileNavItem = ({ label, children, href }) => {
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        as={ChkraLink}
-        href={href ?? '#'}
+        as={NavLink}
+        to={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
