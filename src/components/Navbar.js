@@ -65,7 +65,7 @@ const Navbar = () => {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Image width="4rem" height="4rem" src={logoImg} onClick={()=>navigate()}></Image>
+            <Image width="4rem" height="4rem" src={logoImg} onClick={()=>navigate('/')}></Image>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -160,8 +160,8 @@ const DesktopNav = () => {
 
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
-    <ChkraLink
-      href={href}
+    <NavLink
+      to={href}
       role={'group'}
       display={'block'}
       p={2}
@@ -191,7 +191,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </ChkraLink>
+    </NavLink>
   );
 };
 
@@ -252,9 +252,9 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map(child => (
-              <ChkraLink key={child.label} py={2} href={child.href}>
+              <NavLink key={child.label} py={2} to={child.href}>
                 {child.label}
-              </ChkraLink>
+              </NavLink>
             ))}
         </Stack>
       </Collapse>
