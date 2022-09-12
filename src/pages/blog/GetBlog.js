@@ -25,7 +25,7 @@ const GetBlog = () => {
       setLoading(true);
       try {
         const request = await fetch(
-          'https://blogs1234.herokuapp.com/api/v1/blog' + id
+          'https://blogs1234.herokuapp.com/api/v1/blog/' + id
         );
         const data = await request.json();
 
