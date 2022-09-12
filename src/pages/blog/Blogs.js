@@ -21,7 +21,7 @@ const Blogs = () => {
       setLoading(true);
       try {
         const requst = await fetch(
-          '/api/v1/blog'
+          'https://blogs1234.herokuapp.com/api/v1/blog'
         );
         const data = await requst.json();
         if (requst.status === 200) {

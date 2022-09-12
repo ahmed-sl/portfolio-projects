@@ -23,7 +23,7 @@ const AddBlog = () => {
     setLoading(true);
     try {
       const request = await fetch(
-        '/api/v1/blog',
+        'https://blogs1234.herokuapp.com/api/v1/blog',
         {
           method: 'POST',
           headers: {
