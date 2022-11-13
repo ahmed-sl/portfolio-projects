@@ -26,7 +26,7 @@ const Calculater = () => {
   const onClickPers = () => {
     setTotal(number1 % number2);
   };
- 
+
   return (
     <>
       <Heading textAlign="center">Calculator</Heading>
@@ -37,11 +37,9 @@ const Calculater = () => {
         alignItems="center"
         height="100vh"
       >
-        
         <Container>
           <Box display="flex" width="30rem" justifyContent="space-between">
             <Input
-              type="number"
               width="45%"
               borderRadius="lg"
               _placeholder={{ opacity: 1, color: 'white' }}

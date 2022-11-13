@@ -8,13 +8,11 @@ import {
   Flex,
   VStack,
   useToast,
-  Image,
   Spacer,
   Text,
   HStack,
   Input,
   AspectRatio,
-  iframe,
 } from '@chakra-ui/react';
 import NumberFormat from 'react-number-format';
 import { useNavigate } from 'react-router-dom';

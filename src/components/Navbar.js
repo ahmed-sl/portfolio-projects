@@ -23,7 +23,7 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 import logoImg from '../Images/Logo2.svg';
-import myCV from '../Files/My_CV.pdf'
+import myCV from '../Files/Ahmed_CV.pdf'
 import { NavLink, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
